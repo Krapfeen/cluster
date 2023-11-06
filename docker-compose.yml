@@ -26,9 +26,25 @@ services:
         networks:
             local:
 
+    s3:
+        container_name: ${PROJECT_NAME}-minio
+        image: minio/minio:${S3_VERSION}
+        environment:
+            MINIO_ROOT_USER: ${USER}
+            MINIO_ROOT_PASSWORD: ${PASSWORD}
+        ports:
+            - ${S3_SERVER_PORT}:9000
+            - ${S3_CLIENT_PORT}:9001
+        volumes:
+            - minio:/data
+        command: server /data --console-address ":9001"
+        networks:
+            local:
+
 volumes:
     mariadb:
     redis:
+    minio:
 
 networks:
     local:
