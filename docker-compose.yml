@@ -1,0 +1,24 @@
+services:
+
+    db:
+        container_name: ${PROJECT_NAME}-mariadb
+        image: mariadb:${DB_VERSION}
+        command: [ mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --innodb-file-format=Barracuda, --innodb-large-prefix=1, --innodb-file-per-table=1, --lower_case_table_names=1 ]
+        ports:
+            - ${DB_PORT}:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${PASSWORD}
+            MYSQL_USER: ${USER}
+            MYSQL_PASSWORD: ${PASSWORD}
+        volumes:
+            - mariadb:/var/lib/mysql
+        networks:
+            - local
+
+volumes:
+    mariadb:
+
+networks:
+    local:
+        external:
+            name: local
