@@ -6,15 +6,15 @@
 
 ### Automation
 
-- [Documentation 1](https://github.com/Krapfeen/cluster/commit/a1b2e77f66d1b9ee362d7285037f2c81c0888739) by @Krapfeen
+- [Automation 1](https://github.com/Krapfeen/cluster/commit/0949d4870722310a31669ad95c051f3b89dceb61) by @Krapfeen
 
-### Bugs
+### Bug
 
-- [Documentation 1](https://github.com/Krapfeen/cluster/commit/a1b2e77f66d1b9ee362d7285037f2c81c0888739) by @Krapfeen
+- [Bug 1](https://github.com/Krapfeen/cluster/commit/e3c457e3acfbc7ab57b593b673fbbee6796d1fb7) by @Krapfeen
 
 ### Deployment
 
-- [Documentation 1](https://github.com/Krapfeen/cluster/commit/a1b2e77f66d1b9ee362d7285037f2c81c0888739) by @Krapfeen
+- [Deployment 1](https://github.com/Krapfeen/cluster/commit/0fa19a657ec4c109a3211734ce8ca8565100b6a3) by @Krapfeen
 
 # 1.0.0 (2023-11-06)
 
