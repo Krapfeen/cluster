@@ -23,7 +23,33 @@ DB_PORT=3306
 DB_VERSION=10.7
 ```
 
-## Start containers
+## Makefile
+
+If you want to use Makefile
+
+### Create network
+
+```bash
+make network
+```
+
+### Build containers
+
+```bash
+make build
+```
+
+## Bash commands
+
+if you want to use bash commands
+
+### Create network
+
+```bash
+docker network create local
+```
+
+### Build containers
 
 ```bash
 docker compose -p "$PPROJECT_NAME" up -d
