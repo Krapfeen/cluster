@@ -10,10 +10,11 @@ services:
             MYSQL_ROOT_PASSWORD: ${PASSWORD}
             MYSQL_USER: ${LOGIN}
             MYSQL_PASSWORD: ${PASSWORD}
+            MARIADB_ROOT_PASSWORD: ${PASSWORD}
         volumes:
             - mariadb:/var/lib/mysql
         networks:
-            - local
+            local:
 
     cache:
         image: redis:${REDIS_VERSION}
@@ -41,6 +42,24 @@ services:
         networks:
             local:
 
+    web:
+        container_name: ${PROJECT_NAME}-nginx
+        image: nginx:stable-alpine
+        hostname: cluster.local
+        domainname: cluster.local
+        environment:
+            NGINX_HOST: cluster.local
+            NGINX_PORT: 80
+        volumes:
+            -   ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+            -   ./.docker/clusters.conf:/etc/nginx/conf.d/clusters.conf:ro
+        ports:
+            -   "80:80"
+        networks:
+            local:
+                aliases:
+                      -   s3.cluster.local
+
 volumes:
     mariadb:
     redis:
@@ -48,5 +67,4 @@ volumes:
 
 networks:
     local:
-        external:
-            name: local
+        external: true
