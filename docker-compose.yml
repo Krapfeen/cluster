@@ -1,5 +1,4 @@
 services:
-
     db:
         container_name: ${PROJECT_NAME}-mariadb
         image: mariadb:${DB_VERSION}
@@ -10,6 +9,8 @@ services:
             MYSQL_ROOT_PASSWORD: ${PASSWORD}
             MYSQL_USER: ${LOGIN}
             MYSQL_PASSWORD: ${PASSWORD}
+            MARIADB_USER: ${LOGIN}
+            MARIADB_PASSWORD: ${PASSWORD}
             MARIADB_ROOT_PASSWORD: ${PASSWORD}
         volumes:
             - mariadb:/var/lib/mysql
@@ -51,8 +52,7 @@ services:
             NGINX_HOST: cluster.local
             NGINX_PORT: 80
         volumes:
-            -   ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-            -   ./.docker/clusters.conf:/etc/nginx/conf.d/clusters.conf:ro
+            -   ./.docker/:/etc/nginx/conf.d/:ro
         ports:
             -   "80:80"
         networks:
